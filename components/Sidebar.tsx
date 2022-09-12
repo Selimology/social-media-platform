@@ -44,7 +44,8 @@ const Sidebar = () => {
                   cookiePolicy={'single_host_origin'}
                   render={(renderProps) => (
                     <button
-                      className="text-gray-600 font-bold px-4 py-2 rounded  border-gray-400 border-[2px]   w-full mt-4  hover:bg-gray-100 cursor-pointer"
+                      className=" font-bold px-4 py-2 rounded  hover:border-gray-400 border-[2px]   w-full mt-4   cursor-pointer
+                      text-white  bg-black hover:bg-white hover:text-black"
                       disabled={renderProps.disabled}
                       onClick={renderProps.onClick}
                     >
