@@ -1,8 +1,15 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { useState, useEffect } from 'react';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  const [checkSSR, setcheckSSR] = useState(true);
 
-export default MyApp
+  //executed only on client side so we can set isSSR to false
+  useEffect(() => {
+    setcheckSSR(false);
+  }, []);
+
+  //don't show components if isSSR is true
+  if (checkSSR) return null;
+
