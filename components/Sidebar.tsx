@@ -12,16 +12,16 @@ const Sidebar = () => {
   const normalLink =
     'flex items-center gap-3  justify-center xl:justify-start cursor-pointer px-4 py-2 text-xl xl:text-md mb-4 xl:mb-0 border-2 bg-black text-white rounded ease-in-out transform duration-100 hover:bg-white hover:text-black xl:border-0 xl:bg-white xl:text-black xl:hover:tracking-wider ';
   return (
-    <div>
+    <nav className="overflow-hidden">
       <div
-        className="block xl:hidden m-2 ml-4 mt-3 text-xl"
+        className="flex justify-end  xl:hidden m-2 ml-4 mt-3 text-2xl"
         onClick={() => setToggleSidebar((prev) => !prev)}
       >
         {toggleSidebar ? <MdOutlineCancel /> : <MdOutlineMenu />}
       </div>
       {toggleSidebar && (
-        <div className=" flex flex-col w-20 mt-2 border-gray-100 border-l-2 xl:w-[400px] p-2 mb-12 justify-start ">
-          <div className="xl:border-b-2 border-gray-200 xl:pb-4 xl:pr-4">
+        <div className=" flex flex-col w-20 mt-2 border-gray-100 border-l-2 xl:w-[400px] p-2 mb-6 justify-start overflow-hidden">
+          <div className="xl:border-b-2 border-gray-200 xl:pb-2 xl:pr-4">
             <Link href="/">
               <div className={normalLink}>
                 <p>
@@ -32,7 +32,7 @@ const Sidebar = () => {
             </Link>
           </div>
           {!loggedIn && (
-            <div className="px-2 py-4 hidden xl:block">
+            <div className="px-2 py-4 hidden  xl:block">
               <p className="text-gray-400 text-lg">
                 Log in to like and comment on videos
               </p>
@@ -44,7 +44,7 @@ const Sidebar = () => {
                   cookiePolicy={'single_host_origin'}
                   render={(renderProps) => (
                     <button
-                      className=" font-bold px-4 py-2 rounded  hover:border-gray-400 border-[2px]   w-full mt-4   cursor-pointer
+                      className=" font-bold px-4 py-2 rounded  hover:border-gray-400 border-[2px]   w-full mt-2   cursor-pointer
                       text-white  bg-black hover:bg-white hover:text-black"
                       disabled={renderProps.disabled}
                       onClick={renderProps.onClick}
@@ -61,7 +61,7 @@ const Sidebar = () => {
           <Footer />
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 
