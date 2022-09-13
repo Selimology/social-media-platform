@@ -13,7 +13,7 @@ const Discover = () => {
     'xl:border-gray-400 hover:bg-gray-200 cursor-pointer  flex items-center justify-center   px-4 py-2 w-full xl:w-auto rounded gap-2  border-2 rounded-full';
   return (
     <div className="xl:border-b-2 xl:border-gray-200 pb-8 ">
-      <h2 className="hidden xl:block  text-gray-400 text-lg tracking-wider m-2 w-">
+      <h2 className="hidden xl:block  text-gray-400 text-base tracking-wider m-2 w-">
         Popular topics
       </h2>
       <div className="flex gap-4 xl:gap-3 flex-wrap">
