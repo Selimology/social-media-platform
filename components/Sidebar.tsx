@@ -33,7 +33,7 @@ const Sidebar = () => {
           </div>
           {!loggedIn && (
             <div className="px-2 py-4 hidden  xl:block">
-              <p className="text-gray-400 text-lg">
+              <p className="text-gray-400 text-base">
                 Log in to like and comment on videos
               </p>
               <div className="pr-4">
