@@ -50,3 +50,12 @@ export const topics = [
     icon: <ImNewspaper />,
   },
 ];
+
+export const footerLinks = [
+  'About',
+  'Privacy Policy',
+  'Contact',
+  'Careers',
+  'Sitemap',
+  'Accessibility',
+];
