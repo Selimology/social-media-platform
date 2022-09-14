@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import useRouter from 'next/router';
 import Link from 'next/link';
-import GoogleLogin from 'react-google-login';
 import { MdOutlineCancel, MdOutlineMenu, MdHomeFilled } from 'react-icons/md';
 import { Discover, Recommended, Footer } from '.';
 
@@ -12,9 +11,9 @@ const Sidebar = () => {
   const normalLink =
     'flex items-center gap-3  justify-center xl:justify-start cursor-pointer px-4 py-2 text-xl xl:text-md mb-4 xl:mb-0 border-2 bg-black text-white rounded ease-in-out transform duration-100 hover:bg-white hover:text-black xl:border-0 xl:bg-white xl:text-black xl:hover:tracking-wider ';
   return (
-    <nav className="overflow-hidden">
+    <div className="overflow-hidden  ">
       <div
-        className="flex justify-end  xl:hidden m-2 ml-4 mt-3 text-2xl"
+        className="flex justify-end   xl:hidden m-2 ml-4 mt-3 text-2xl"
         onClick={() => setToggleSidebar((prev) => !prev)}
       >
         {toggleSidebar ? <MdOutlineCancel /> : <MdOutlineMenu />}
@@ -37,22 +36,12 @@ const Sidebar = () => {
                 Log in to like and comment on videos
               </p>
               <div className="pr-4">
-                <GoogleLogin
-                  clientId=""
-                  onSuccess={() => {}}
-                  onFailure={() => {}}
-                  cookiePolicy={'single_host_origin'}
-                  render={(renderProps) => (
-                    <button
-                      className=" font-bold px-4 py-2 rounded  hover:border-gray-400 border-[2px]   w-full mt-2   cursor-pointer
+                <button
+                  className=" font-bold px-4 py-2 rounded  hover:border-gray-400 border-[2px]   w-full mt-2   cursor-pointer
                       text-white  bg-black hover:bg-white hover:text-black"
-                      disabled={renderProps.disabled}
-                      onClick={renderProps.onClick}
-                    >
-                      Login
-                    </button>
-                  )}
-                />
+                >
+                  Login
+                </button>
               </div>
             </div>
           )}
@@ -61,7 +50,7 @@ const Sidebar = () => {
           <Footer />
         </div>
       )}
-    </nav>
+    </div>
   );
 };
 
