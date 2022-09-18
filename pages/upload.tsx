@@ -74,7 +74,7 @@ const Upload = () => {
                       type="file"
                       name="uploadvideo"
                       className="w-0 h-0"
-                      onChange={uploadVideo}
+                      onChange={(e) => uploadVideo(e)}
                     />
                   </label>
                 )}
