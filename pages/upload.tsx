@@ -13,7 +13,10 @@ const Upload = () => {
   const [video, setVideo] = useState<SanityAssetDocument>();
   const [wrongFileType, setWrongFileType] = useState(false);
   const [caption, setCaption] = useState('');
-  const [topic, Topic] = useState(topics[0].name);
+  const [topic, setTopic] = useState(topics[0].name);
+  const [savingPost, setSavingPost] = useState(false);
+  const { userProfile }: { userProfile: any } = useAuthStore();
+  const router = useRouter();
 
   const uploadVideo = async (e: any) => {
     const selectedFile = e.target.files[0];
@@ -34,6 +37,33 @@ const Upload = () => {
     }
   };
 
+  const handlePost = async () => {
+    if (caption && topic && video?._id) {
+      setSavingPost(true);
+
+      const document = {
+        _type: 'post',
+        caption,
+        video: {
+          _type: 'file',
+          asset: {
+            _type: 'reference',
+            _ref: video._id,
+          },
+        },
+        userId: userProfile?._id,
+        postedBy: {
+          _ref: userProfile?._id,
+          _type: 'postedBy',
+        },
+        topic: topic,
+      };
+
+      await axios.post('http://localhost:3000/api/posts', document);
+      router.push('/');
+    }
+  };
+
   return (
     <div className="flex h-full w-full justify-center   items-center ">
       <div className=" h-fit rounded-lg flex-col gap-4 sm:flex-row sm:gap-10 flex-wrap flex ">
@@ -45,7 +75,9 @@ const Upload = () => {
           <div className="w-[250px] h-[400px] border-dashed rounded border-4 border-gray-300 items-center flex flex-col justify-center outline-none w- p-10 cursor pointer hover:border-pink-400 hover:bg-gray-100">
             {isLoading ? (
               <div>
-                <p>Uploading.</p>
+                <p className="text-center text-2xl text-red-500 font-bold">
+                  Uploading.
+                </p>
               </div>
             ) : (
               <div>
@@ -91,14 +123,14 @@ const Upload = () => {
           <label className="font-bold capitalize"> Caption</label>
           <input
             type="text"
-            value=""
-            onChange={() => {}}
+            value={caption}
+            onChange={(event) => setCaption(event.target.value)}
             className=" rounded outline-none text-md border-2 text-black border-gray-300 p-2"
           />
           <label className="font-bold capitalize">Choose topic category</label>
           <select
             className="outline-none border-2 border-gray-300 bg-white text-md capitalize  rounded cursor-pointer p-2"
-            onChange={() => {}}
+            onChange={(event) => setTopic(event.target.value)}
           >
             {topics.map((topic) => (
               <option
@@ -120,7 +152,7 @@ const Upload = () => {
               Cancel
             </button>
             <button
-              onClick={() => {}}
+              onClick={() => handlePost()}
               type="button"
               className=" px-10 border-2 py-2 bg-black text-white hover:bg-green-500 text-md font-bold "
             >
