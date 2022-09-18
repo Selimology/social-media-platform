@@ -2,9 +2,10 @@ import type { NextPage } from 'next';
 import axios from 'axios';
 import { Video } from '../types/types';
 import { NoVideosFound, VideoCard } from '../components';
+import { BASE_URL } from '../utils';
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`http://localhost:3000/api/posts`);
+  const { data } = await axios.get(`${BASE_URL}/api/posts`);
   return {
     props: {
       videos: data,
