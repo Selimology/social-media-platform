@@ -31,6 +31,12 @@ const VideoCard: NextPage<Props> = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    if (videoRef?.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
       <div className="flex gap-2 mb-4 py-2  cursor-pointer font-semibold rounded">
@@ -66,7 +72,7 @@ const VideoCard: NextPage<Props> = ({ post }) => {
           onMouseLeave={() => setIsHover(false)}
           className="rounded-3xl"
         >
-          <Link href="/">
+          <Link href={`/detail/${post._id}`}>
             <video
               ref={videoRef}
               loop
