@@ -30,7 +30,7 @@ export const getServerSideProps = async ({
 };
 
 const Detail = ({ postDetails }: Props) => {
-  const { userProfile } = useAuthStore();
+  const { userProfile }: any = useAuthStore();
   const videoButtons =
     'text-white text-2xl  m-2 rounded border-black lg:text-3xl';
   const [isMuted, setIsMuted] = useState(false);
@@ -46,6 +46,17 @@ const Detail = ({ postDetails }: Props) => {
     } else {
       videoRef.current?.play();
       setIsPlaying(true);
+    }
+  };
+
+  const handleLike = async (like: boolean) => {
+    if (userProfile) {
+      //use put to update
+      const response = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: post._id,
+        like,
+      });
     }
   };
 
