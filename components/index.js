@@ -5,3 +5,5 @@ export { default as Footer } from './Footer';
 export { default as Discover } from './Discover';
 export { default as VideoCard } from './VideoCard';
 export { default as NoVideosFound } from './NoVideosFound';
+export { default as Comment } from './Comment';
+export { default as LikeButton } from './LikeButton';
