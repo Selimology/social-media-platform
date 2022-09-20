@@ -8,6 +8,7 @@ import { BsSearch } from 'react-icons/bs';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { createOrSignUser } from '../utils';
 import useAuthStore from '../store/authStore';
+import { Video } from '../types/types';
 
 const Navbar = () => {
   const router = useRouter();
@@ -59,7 +60,7 @@ const Navbar = () => {
               </button>
             </Link>
             {userProfile.image && (
-              <Link href="/">
+              <Link href={`/profile/${userProfile._id}`}>
                 <Image
                   width={35}
                   height={35}
