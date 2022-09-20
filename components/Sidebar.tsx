@@ -18,7 +18,7 @@ const Sidebar = () => {
         {toggleSidebar ? <MdOutlineCancel /> : <MdOutlineMenu />}
       </div>
       {toggleSidebar && (
-        <div className=" flex flex-col w-20 mt-2 border-gray-100 border-l-2 xl:w-[400px] p-2 mb-6 justify-start overflow-hidden ">
+        <div className=" flex flex-col w-20 mt-2 border-gray-100 border-l-2 xl:w-[400px] p-2 justify-start overflow-hidden ">
           <div className="xl:border-b-2 border-gray-200 xl:pb-2 xl:pr-4">
             <Link href="/">
               <div className={normalLink}>

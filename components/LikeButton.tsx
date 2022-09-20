@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdFavorite } from 'react-icons/md';
-import useAuthStore from '../store/auth';
+import useAuthStore from '../store/authStore';
 
 interface Props {
   handleLike: () => void;

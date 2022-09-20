@@ -1,4 +1,4 @@
-import useAuthStore from '../../store/auth';
+import useAuthStore from '../../store/authStore';
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ import { MdVerifiedUser, MdOutlineCancel } from 'react-icons/md';
 import axios from 'axios';
 import { BASE_URL } from '../../utils';
 import { Video } from '../../types/types';
-import { Comment, LikeButton } from '../../components';
+import { LikeButton } from '../../components';
 
 interface Props {
   postDetails: Video;
@@ -160,7 +160,6 @@ const Detail = ({ postDetails }: Props) => {
               />
             )}
           </div>
-          <Comment />
         </div>
       </div>
     </div>

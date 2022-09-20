@@ -1,10 +1,7 @@
 import React from 'react';
 
-interface Props {
-  text: string;
-}
-const NoVideosFound = ({ text }: Props) => {
-  return <div>NoVideosFound</div>;
+const NoVideosFound = () => {
+  return <div>No Videos Found Yet!</div>;
 };
 
 export default NoVideosFound;

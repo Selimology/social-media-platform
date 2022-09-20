@@ -6,7 +6,7 @@ import { MdOutlineLogout, MdOutlineSearch } from 'react-icons/md';
 import { IoAdd } from 'react-icons/io5';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { createOrSignUser } from '../utils';
-import useAuthStore from '../store/auth';
+import useAuthStore from '../store/authStore';
 
 const Navbar = () => {
   const { userProfile, addUser, removeUser } = useAuthStore();

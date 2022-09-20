@@ -24,7 +24,7 @@ const Home = ({ videos }: Props) => {
       {videos.length ? (
         videos.map((video: Video) => <VideoCard post={video} key={video._id} />)
       ) : (
-        <NoVideosFound text={'No Videos'} />
+        <NoVideosFound />
       )}
     </div>
   );

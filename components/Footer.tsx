@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="mt-5 hidden xl:block overflow-hidden">
       <FooterLinks items={Links} />
-      <p className="text-sm  text-gray-700 mt-2">2020 &copy; Kamil Ertekin</p>
+      <p className="text-sm  text-gray-700 mt-2">2022 &copy; Kamil Ertekin</p>
     </footer>
   );
 };
