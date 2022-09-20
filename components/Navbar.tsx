@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useRouter from 'next/router';
+import { useRouter } from 'next/router';
 import { MdOutlineLogout, MdOutlineSearch } from 'react-icons/md';
 import { IoAdd } from 'react-icons/io5';
+import { BsSearch } from 'react-icons/bs';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { createOrSignUser } from '../utils';
 import useAuthStore from '../store/authStore';
 
 const Navbar = () => {
+  const router = useRouter();
+  const handleSearch = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (searchText) {
+      router.push(`/search/${searchText}`);
+    }
+  };
+  const [searchText, setSearchText] = useState('');
   const { userProfile, addUser, removeUser } = useAuthStore();
   return (
     <div className="w-full bg-white justify-between items-center flex border-b-2 border-gray-300 px-4 py-2 ">
@@ -17,7 +26,29 @@ const Navbar = () => {
           <h2 className="font-bold text-3xl">NotTiktok</h2>
         </div>
       </Link>
-      <div>SEARCH</div>
+      <div className=" relative hidden md:block">
+        <form
+          onSubmit={handleSearch}
+          className="absolute md:static top-10 -left-20 bg-white"
+        >
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+            placeholder="Search"
+            className="bg-gray-100 p-2 md:text-md border-2 border-gray-200 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] md:top-0   
+            "
+          />
+          <button
+            onClick={handleSearch}
+            className="absolute md:right-5 top-3   pl-4 text-xl right-6 text-gray-400"
+          >
+            <BsSearch />
+          </button>
+        </form>
+      </div>
       <div>
         {userProfile ? (
           <div className="flex gap-4">
