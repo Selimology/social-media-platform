@@ -81,7 +81,7 @@ const Profile = ({ data }: Props) => {
             Liked
           </p>
         </div>
-        <div className="flex flex-wrap  justify-center">
+        <div className="flex flex-wrap  gap-10 mb-10 justify-center">
           {videoList.length > 0 ? (
             videoList.map((post: Video, index: number) => (
               <VideoCard post={post} key={index} />
