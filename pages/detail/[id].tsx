@@ -52,11 +52,12 @@ const Detail = ({ postDetails }: Props) => {
   const handleLike = async (like: boolean) => {
     if (userProfile) {
       //use put to update
-      const response = await axios.put(`${BASE_URL}/api/like`, {
+      const { data } = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
         like,
       });
+      setPost({ ...post, likes: data.likes });
     }
   };
 
@@ -150,7 +151,15 @@ const Detail = ({ postDetails }: Props) => {
 
           <p className=" text-md text-gray-600">{post.caption}</p>
 
-          <div className="">{userProfile && <LikeButton />}</div>
+          <div>
+            {userProfile && (
+              <LikeButton
+                likes={post.likes}
+                handleLike={() => handleLike(true)}
+                handleDislike={() => handleLike(false)}
+              />
+            )}
+          </div>
           <Comment />
         </div>
       </div>
