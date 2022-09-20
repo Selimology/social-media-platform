@@ -23,7 +23,7 @@ const Navbar = () => {
     <div className="w-full bg-white justify-between items-center flex border-b-2 border-gray-300 px-4 py-2 ">
       <Link href="/">
         <div className="w-[100px] md:w-[130px]">
-          <h2 className="font-bold text-3xl">NotTiktok</h2>
+          <h2 className="font-bold text-3xl">PostGram</h2>
         </div>
       </Link>
       <div className=" relative hidden md:block">
